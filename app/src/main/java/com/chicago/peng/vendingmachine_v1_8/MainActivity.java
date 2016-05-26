@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     RadioGroup radioGroup;
 
     HashMap<Integer, Beverage> beverage_map = new HashMap<>();
-
+    HashMap<Integer, Integer> quantity_map = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,12 @@ public class MainActivity extends AppCompatActivity {
         beverage_map.put(R.id.radioButton3, new Beverage(R.id.radioButton3, "Fireball", 14.20, 350, 1));
         beverage_map.put(R.id.radioButton4, new Beverage(R.id.radioButton4, "Sprite", 1.35, 200, 0));
         beverage_map.put(R.id.radioButton5, new Beverage(R.id.radioButton5, "Blue Guy", 3.60, 300, 3));
+
+        quantity_map.put(R.id.radioButton1, R.id.textQuantity1);
+        quantity_map.put(R.id.radioButton2, R.id.textQuantity2);
+        quantity_map.put(R.id.radioButton3, R.id.textQuantity3);
+        quantity_map.put(R.id.radioButton4, R.id.textQuantity4);
+        quantity_map.put(R.id.radioButton5, R.id.textQuantity5);
 
         /* Initialize Radio Group and attach click handler */
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
@@ -97,9 +103,6 @@ public class MainActivity extends AppCompatActivity {
                 double cost = beverage.cost;
                 int quantity = beverage.quantity;
 
-                System.out.println("+++++++++++in buying 1+++++++++++");
-
-
                 if(quantity == 0) {
                     text = "Sorry! Sold out.";
                 } else {
@@ -107,12 +110,16 @@ public class MainActivity extends AppCompatActivity {
                         text = "Money inserted is not enough!";
                     } else {
                         current -= cost;
-                        System.out.println("cost: " + cost);
-                        System.out.println("in buying ________ cur: " + current);
-                        String str = String.format("%.2f", current);
-                        if(current >= 10.00) str = "$" + str;
-                        else str = "$ " + str;
-                        textCurrent.setText(str);
+                        quantity -= 1;
+
+                        // clear current account
+                        textCurrent.setText("$ 0.00");
+
+                        // update quantity
+                        beverage.quantity = quantity;
+                        TextView text_quantity = (TextView) findViewById(quantity_map.get(id));
+                        text_quantity.setText(String.valueOf(quantity));
+
                         text = "Successfully bought the beverage! Enjoy!\n" + getChanges(current);
                     }
                 }
@@ -129,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 TextView textView = (TextView) findViewById(R.id.text_history);
                 textView.setText("Canceling ...");
 
+                // clear current
                 TextView textCurrent = (TextView) findViewById(R.id.text_current);
                 double current = Double.parseDouble(textCurrent.getText().toString().substring(1));
                 textCurrent.setText("$ 0.00");
