@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.chicago.peng.vendingmachine_v1_8.MainActivity">
+
+    <TextView
+        android:id="@+id/text_current"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$ 0.00"
+        android:textSize="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/text_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="18dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/button_insert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Insert"
+        android:layout_below="@+id/text_current"
+        android:layout_alignRight="@+id/text_history"
+        android:layout_alignEnd="@+id/text_history" />
+
+    <Button
+        android:id="@+id/button_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:layout_marginBottom="68dp"
+        android:layout_above="@+id/textView"
+        android:layout_toRightOf="@+id/text_current"
+        android:layout_toEndOf="@+id/text_current" />
+
+    <Button
+        android:id="@+id/button_buy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buy"
+        android:layout_alignTop="@+id/button_cancel"
+        android:layout_toLeftOf="@+id/text_current"
+        android:layout_toStartOf="@+id/text_current" />
+
+    <Spinner
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dollars_spinner"
+        android:layout_below="@+id/text_current"
+        android:layout_toLeftOf="@+id/button_insert"
+        android:layout_toStartOf="@+id/button_insert" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/button_insert"
+        android:layout_alignRight="@+id/button_insert"
+        android:layout_alignEnd="@+id/button_insert"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="29dp"
+            android:text="      Beverage"
+            android:textSize="14dp"
+            android:id="@+id/textBeverage"
+            android:layout_column="0"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="      Cost"
+            android:id="@+id/textCost0"
+            android:layout_column="6"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="      Calories"
+            android:id="@+id/textCalories0"
+            android:layout_column="11"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="      Quantity"
+            android:id="@+id/textQuantity0"
+            android:layout_column="16"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="18dp"
+        android:layout_above="@+id/text_history"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/button_cancel"
+        android:layout_alignEnd="@+id/button_cancel" />
+
+    <RadioGroup
+        android:layout_width="89dp"
+        android:layout_height="match_parent"
+        android:id="@+id/radioGroup"
+        android:layout_weight="0.23"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/button_buy"
+        android:layout_alignEnd="@+id/button_buy"
+        android:layout_alignBottom="@+id/linearLayout3"
+        android:layout_below="@+id/linearLayout">
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Coke"
+            android:textSize="18dp"
+            android:id="@+id/radioButton1"
+            android:layout_column="0"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pepsi"
+            android:textSize="18dp"
+            android:id="@+id/radioButton2"
+            android:layout_column="0"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fireball"
+            android:textSize="18dp"
+            android:id="@+id/radioButton3"
+            android:layout_column="0"
+            android:layout_weight="1"
+            android:layout_gravity="left" />
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sprite"
+            android:textSize="18dp"
+            android:id="@+id/radioButton4"
+            android:layout_column="0"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Blue Guy"
+            android:textSize="18dp"
+            android:id="@+id/radioButton5"
+            android:layout_column="0"
+            android:layout_weight="1" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linearLayout"
+        android:layout_toEndOf="@+id/button_buy"
+        android:id="@+id/linearLayout3"
+        android:layout_toRightOf="@+id/button_buy"
+        android:layout_above="@+id/button_cancel">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/button_buy"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/linearLayout2"
+            android:layout_toLeftOf="@+id/button_cancel"
+            android:layout_toRightOf="@+id/button_buy"
+            android:layout_toEndOf="@+id/button_buy"
+            android:layout_weight="0.94">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="$ 1.85"
+                android:textSize="18dp"
+                android:id="@+id/textCost1"
+                android:layout_column="6"
+                android:layout_weight="1"
+                android:layout_gravity="left" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="$ 1.99"
+                android:textSize="18dp"
+                android:id="@+id/textCost2"
+                android:layout_column="6"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="$14.20"
+                android:textSize="18dp"
+                android:id="@+id/textCost3"
+                android:layout_column="6"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="$ 1.35"
+                android:textSize="18dp"
+                android:id="@+id/textCost4"
+                android:layout_column="6"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="$ 3.60"
+                android:textSize="18dp"
+                android:id="@+id/textCost5"
+                android:layout_column="6"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/button_buy"
+            android:layout_alignRight="@+id/button_cancel"
+            android:layout_alignEnd="@+id/button_cancel"
+            android:layout_alignLeft="@+id/button_cancel"
+            android:layout_alignStart="@+id/button_cancel"
+            android:layout_weight="0.71">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="200"
+                android:textSize="18dp"
+                android:id="@+id/textCalories1"
+                android:layout_column="11"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="180"
+                android:textSize="18dp"
+                android:id="@+id/textCalories2"
+                android:layout_column="11"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="350"
+                android:textSize="18dp"
+                android:id="@+id/textCalories3"
+                android:layout_column="11"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="200"
+                android:textSize="18dp"
+                android:id="@+id/textCalories4"
+                android:layout_column="11"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="300"
+                android:textSize="18dp"
+                android:id="@+id/textCalories5"
+                android:layout_column="11"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/button_buy"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/button_cancel"
+            android:layout_toEndOf="@+id/button_cancel"
+            android:layout_weight="0.51">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textSize="18dp"
+                android:id="@+id/textQuantity1"
+                android:layout_column="16"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" 7"
+                android:textSize="18dp"
+                android:id="@+id/textQuantity2"
+                android:layout_column="16"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" 1"
+                android:textSize="18dp"
+                android:id="@+id/textQuantity3"
+                android:layout_column="16"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" 0"
+                android:textSize="18dp"
+                android:id="@+id/textQuantity4"
+                android:layout_column="16"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" 3"
+                android:textSize="18dp"
+                android:id="@+id/textQuantity5"
+                android:layout_column="16"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
