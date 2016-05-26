@@ -146,10 +146,6 @@ public class MainActivity extends AppCompatActivity {
      * Buy action
      */
     public void buyAction() {
-//        // debugging status bar
-//        TextView textNone = (TextView) findViewById(R.id.text_none);
-//        textNone.setText("Buying ...");
-
         String text; // info to be shown as status
 
         // get current
@@ -209,19 +205,12 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, // getApplicationContext()
                 text,
                 Toast.LENGTH_LONG).show();
-
-//        // show changes in history bar
-//        TextView textHistory = (TextView) findViewById(R.id.text_history);
-//        textHistory.setText(text);
     }
 
     /*
      * Cancel action
      */
     public void cancelAction() {
-//        // debugging status bar
-//        TextView textNone = (TextView) findViewById(R.id.text_none);
-//        textNone.setText("Canceling ...");
 
         // claer spinner
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -243,17 +232,19 @@ public class MainActivity extends AppCompatActivity {
         // dispense changes
         String text = getChanges(current);
 
-        // show changes in toast
-        Toast.makeText(MainActivity.this, // getApplicationContext()
-                text,
-                Toast.LENGTH_SHORT).show();
+        if(text.length() > 23) {
+            // show changes in toast
+            Toast.makeText(MainActivity.this, // getApplicationContext()
+                    text,
+                    Toast.LENGTH_SHORT).show();
 
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.get_changes_sound);
-        mediaPlayer.start();
-
-//        // show changes in history bar
-//        TextView textHistory = (TextView) findViewById(R.id.text_history);
-//        textHistory.setText(text);
+            MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.get_changes_sound);
+            mediaPlayer.start();
+        } else {
+            Toast.makeText(MainActivity.this, // getApplicationContext()
+                    "Nothing happen ...",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
     /*
