@@ -1,6 +1,8 @@
 package com.chicago.peng.vendingmachine_v1_8;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -135,6 +137,9 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, // getApplicationContext()
                 text,
                 Toast.LENGTH_SHORT).show();
+
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.insert_coins);
+        mediaPlayer.start();
     }
 
     /*
@@ -152,8 +157,8 @@ public class MainActivity extends AppCompatActivity {
         double current = Double.parseDouble(textCurrent.getText().toString().substring(1));
 
         // check if has selection
-        int id = radioGroup.getCheckedRadioButtonId();
-        if (id == -1) {
+        int radioButtonId = radioGroup.getCheckedRadioButtonId();
+        if (radioButtonId == -1) {
             text = "You need to choose one beverage first!";
             Toast.makeText(MainActivity.this, // getApplicationContext()
                     text,
@@ -162,8 +167,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // get beverage info
-        RadioButton rb = (RadioButton) radioGroup.findViewById(id);
-        Beverage beverage = beverage_map.get(id);
+        Beverage beverage = beverage_map.get(radioButtonId);
         double cost = beverage.cost;
         int quantity = beverage.quantity;
 
@@ -174,6 +178,10 @@ public class MainActivity extends AppCompatActivity {
             if (cost > current) {
                 text = "Money inserted is not enough!";
             } else {
+                Intent intent = new Intent(this, BuyingInfoActivity.class);
+                intent.putExtra("EXTRA_BEVERAGE", beverage.name);
+                startActivity(intent);
+
                 current -= cost;
                 quantity -= 1;
 
@@ -182,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // update quantity
                 beverage.quantity = quantity;
-                TextView text_quantity = (TextView) findViewById(quantity_map.get(id));
+                TextView text_quantity = (TextView) findViewById(quantity_map.get(radioButtonId));
                 text_quantity.setText(String.valueOf(quantity));
 
                 text = "Successfully bought the beverage! Enjoy!\n" + getChanges(current);
@@ -239,6 +247,9 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, // getApplicationContext()
                 text,
                 Toast.LENGTH_SHORT).show();
+
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.get_changes_sound);
+        mediaPlayer.start();
 
 //        // show changes in history bar
 //        TextView textHistory = (TextView) findViewById(R.id.text_history);
