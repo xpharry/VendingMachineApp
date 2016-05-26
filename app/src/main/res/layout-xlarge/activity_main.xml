@@ -83,13 +83,13 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="      Beverage"
             android:textSize="18dp"
             android:id="@+id/textBeverage"
             android:layout_column="0"
-            android:layout_gravity="center_vertical|bottom"
-            android:layout_weight="1.5" />
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1" />
 
         <TextView
             android:layout_width="0dp"
@@ -187,11 +187,11 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/linearLayout"
         android:layout_toEndOf="@+id/button_buy"
         android:id="@+id/linearLayout3"
         android:layout_toRightOf="@+id/button_buy"
-        android:layout_above="@+id/button_cancel"
-        android:layout_below="@+id/linearLayout">
+        android:layout_above="@+id/button_cancel">
 
         <LinearLayout
             android:orientation="vertical"
