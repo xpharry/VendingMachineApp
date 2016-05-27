@@ -116,9 +116,9 @@ public class MainActivity extends AppCompatActivity {
         // get the value to be inserted
         String text = spinner.getSelectedItem().toString();
 
-        if( text == "$ 0.00" ) {
+        if( text.equals("$ 0.00") ) {
             Toast.makeText(MainActivity.this, // getApplicationContext()
-                    "Invalid money value to be inserted!",
+                    "No money inserted!",
                     Toast.LENGTH_SHORT).show();
             return;
         }
